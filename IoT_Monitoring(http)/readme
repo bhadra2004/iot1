@@ -1,0 +1,27 @@
+pip install flask supabase request
+
+create table sensor_data (
+  id bigint generated always as identity primary key,
+  temperature float8,
+  humidity float8,
+  created_at timestamptz default now()
+);
+
+
+alter table public.sensor_data enable row level security;
+
+grant usage on schema public to anon;
+
+grant select, insert on public.sensor_data to anon;
+
+create policy "Allow public insert"
+on public.sensor_data
+for insert
+to anon
+with check (true);
+
+create policy "Allow public select"
+on public.sensor_data
+for select
+to anon
+using (true);

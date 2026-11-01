@@ -1,0 +1,5 @@
+Connection Points
+PIR Sensor Pin	ESP32 Pin
+VCC	5V / VIN
+OUT	GPIO 13
+GND	GND

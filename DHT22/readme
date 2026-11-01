@@ -1,0 +1,5 @@
+Step 2: Connection points
+DHT22 Pin	ESP32 Pin
+VCC (+)	3V3
+DATA / SDA	GPIO 15
+GND (−)	GND

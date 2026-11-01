@@ -1,0 +1,30 @@
+ pip install paho-mqtt
+
+ client.connect("mqtt.eu.thingsboard.cloud", 1883)
+
+Step 1: Create a dashboard
+1. Open ThingsBoard European Cloud.
+2. Go to Dashboards.
+3. Click + Add Dashboard.
+4. Enter name: Temperature and Humidity Dashboard.
+5. Click Add and open the dashboard.
+Step 2: Add Temperature widget
+1. Click Edit Dashboard (pencil icon).
+2. Click Add Widget.
+3. Select Charts or Time Series.
+4. Choose a Time Series Chart.
+5. Select your device Temperature_Sensor as the data source (create a device alias if prompted).
+6. Select telemetry key temperature.
+7. Click Add or Save.
+Step 3: Add Humidity widget
+Repeat the same steps, but select telemetry key humidity.
+Step 4: Save and view
+Click Save Dashboard (checkmark icon).
+
+You should now see two charts showing temperature and humidity readings, updating as your Python program continues publishing data.
+
+Your IoT practical is now complete:
+
+Python Sensor Simulation → MQTT → ThingsBoard Cloud → Dashboard.
+
+Would you like to display the readings as digital gauges (numbers) instead of line charts? They are often easier to demonstrate during a practical exam.

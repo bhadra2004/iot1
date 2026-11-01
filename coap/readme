@@ -1,0 +1,26 @@
+pip install aiocoap requests flask
+
+
+create table if not exists environment_data (
+    id bigint generated always as identity primary key,
+    temperature float8,
+    humidity float8,
+    weather_code int,
+    pm10 float8,
+    pm2_5 float8,
+    carbon_monoxide float8,
+    nitrogen_dioxide float8,
+    ozone float8,
+    european_aqi float8,
+    created_at timestamptz default now()
+);
+
+alter table environment_data enable row level security;
+
+grant select, insert on environment_data to anon;
+
+drop policy if exists "environment_insert" on environment_data;
+
+create policy "environment_insert"
+on environment_data for insert
+to anon with check (true);

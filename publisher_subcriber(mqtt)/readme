@@ -1,0 +1,52 @@
+
+pip install paho-mqtt
+
+
+Step 7: Configure Mosquitto (local offline broker)
+Once Mosquitto is installed on Windows:
+1. Open Command Prompt.
+2. Navigate to the Mosquitto installation directory.
+cd "C:\Program Files\mosquitto"
+
+
+3. Start the local broker:
+.\mosquitto.exe -v -p 1883
+
+
+Keep this terminal open. If port 1883 is already in use because Mosquitto is running as a Windows service, use that existing broker instead of starting a second instance.
+Step 8: Change both Python files for offline MQTT
+In both publisher.py and subscriber.py, change:
+broker = "broker.hivemq.com"
+
+
+
+to:
+broker = "localhost"
+
+
+
+No other code changes are required.
+Step 9: Run using Mosquitto (offline)
+You can disconnect your internet connection because the broker is running locally.
+
+Keep the Mosquitto broker running, then open two VS Code terminals.
+
+Terminal 1 – Subscriber
+python subscriber.py
+
+
+Terminal 2 – Publisher
+python publisher.py
+
+
+Expected output:
+Waiting for messages...
+Temperature: 28.75 C
+Humidity: 60.32 %
+-----------------------
+Temperature: 31.20 C
+Humidity: 67.45 %
+-----------------------
+
+
+The local broker handles MQTT communication without an internet connection.

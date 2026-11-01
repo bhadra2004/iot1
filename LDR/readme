@@ -1,0 +1,5 @@
+LDR Module Pin	ESP32 Pin
+VCC	3V3
+GND	GND
+AO (Analog Output)	GPIO 34
+DO (Digital Output)	Not connected

@@ -1,0 +1,24 @@
+pip install paho-mqtt requests flask
+
+
+create table if not exists sensor_data (
+    id bigint generated always as identity primary key,
+    temperature float8,
+    humidity float8,
+    created_at timestamptz default now()
+);
+
+alter table sensor_data enable row level security;
+
+grant select, insert on sensor_data to anon;
+
+drop policy if exists "mqtt_insert" on sensor_data;
+drop policy if exists "mqtt_select" on sensor_data;
+
+create policy "mqtt_insert"
+on sensor_data for insert
+to anon with check (true);
+
+create policy "mqtt_select"
+on sensor_data for select
+to anon using (true);
